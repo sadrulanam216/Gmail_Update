@@ -1,0 +1,23 @@
+name: C Program CI/CD
+
+on: 
+  push: 
+    branches:
+      - main  
+      
+jobs:
+  build_and_run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install GCC
+        run: sudo apt-get install -y gcc
+
+      - name: Compile C program
+        run: gcc -o output Gmail.c
+
+      - name: Run the program
+        run: ./output
